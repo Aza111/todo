@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+   
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCYTPABdLeLAS0cfeciQmOZ20AEWvhrhqo",
+        authDomain: "my-own-todo.firebaseapp.com",
+        databaseURL: "https://my-own-todo.firebaseio.com",
+        projectId: "my-own-todo",
+        storageBucket: "my-own-todo.appspot.com",
+        messagingSenderId: "122320094316"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
+    <script src="app.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body ng-controller="TodoController">
+    <br>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Web Based Firebase Chat Application</div>
+            <div class="panel-body">
+                <div class="message" ng-repeat="m in todos">
+                    <h3>{{m.name}}</h3>
+                    <p>{{m.todo}} - {{m.date | date:'medium'}}</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Message here..." ng-model="todoText">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="send()">Send</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
